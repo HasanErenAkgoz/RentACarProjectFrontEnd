@@ -1,0 +1,130 @@
+<section
+  class="hero-section"
+  id="background"
+  style="
+    background-image: url('../../../assets/img/5bea31f180866296289137bf9d2e9a8e\ \(1\).jpg');
+  "
+  data-stellar-background-ratio="0.5"
+>
+  <div class="overlay"></div>
+  <div class="container">
+    <div
+      class="
+        row
+        no-gutters
+        slider-text
+        js-fullheight
+        align-items-end
+        justify-content-start
+      "
+    >
+      <div class="col-md-9 ftco-animate pb-5">
+        <h2 class="mb-3 bread" style="color: black">
+          Arabanı seç ve mükemmel yolculuğuna başla
+        </h2>
+      </div>
+      >s
+    </div>
+  </div>
+</section>
+<div *ngIf="dataLoaded" clas class="container">
+  <div>
+    <div class="row">
+      <div style="margin-top: 2rem" class="col-md-12">
+        <div class="row g-3 bg-dark bg-gradient">
+          <div style="margin-left: 5rem" class="col-2">
+            <select
+              class="form-select"
+              aria-label="Model adı"
+              [(ngModel)]="brandFilter"
+            >
+              <option
+                *ngFor="let brand of brandList"
+                [value]="brand.id"
+                [selected]="setCurrentBrand(brand.id)"
+              >
+                {{ brand.name }}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-1">
+            <a
+              (click)="getCarListBrandId(brandFilter)"
+              class="btn btn-primary mb-3"
+              >Filtrele</a
+            >
+          </div>
+          <div class="col-1">
+            <a (click)="getCars()" class="btn btn-success mb-3">Sıfırla</a>
+          </div>
+          <div class="col-6">
+            <div class="d-flex justify-content-end align-items-center">
+              <div class="col-sm-3 mb-1 text-light">
+                <label>Model Arama: </label>
+              </div>
+              <div class="mb-1">
+                <input
+                  [(ngModel)]="filterText"
+                  type="text"
+                  class="form-control"
+                  placeholder="Model adı giriniz"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="row">
+      <div  class="text text-center">
+        <h4>Araçlarımız</h4>
+      </div>
+      <div
+        *ngFor="let car of cars | filterPipe: filterText"
+        class="card"
+        class="col-md-3"
+        style="margin-top: 1rem"
+      >
+        <div style="width: 19rem; height: 100%">
+          <img
+            [src]="
+              car.imagePath.length !== 0
+                ? defaultPath + car.imagePath[0]
+                : defaultPath + defaultImage
+            "
+            class="card-img-top"
+            style="height: 15rem"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ car.brandName | uppercase }}</h5>
+            <h6 style="margin-left: 1rem">{{ car.modelName }}</h6>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item active text text-center">Plaka: {{ car.plate }} km</li>
+            <li class="list-group-item">Kilometro: {{ car.km }} km</li>
+            <li class="list-group-item">Renk: {{ car.color }}</li>
+            <li class="list-group-item">Günlük Ücret {{ car.dailyPrice }} ₺</li>
+            <li class="list-group-item">
+              KDV Dahil Günlük Ücret {{ car.dailyPrice | vatAdded: 18 }} ₺
+            </li>
+            <li class="list-group-item">
+              <a
+                routerLink="/carDetail/{{ car.carId }}"
+                style="width: auto"
+                class="btn btn-success"
+                >Aracın Detayına Git</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div *ngIf="empty==true" class="alert alert-danger text text-center">
+<h4>Kriterlerinize Uygun Araç Bulunamamaktadır.</h4>
+    </div>
+  </div>
+</div>
+<br />

@@ -1,0 +1,30 @@
+<section id="service" class="service-section pt-150 pb-120">
+  <div class="container">
+  <div class="row">
+  <div class="col-xl-7 col-lg-8 col-md-10 mx-auto">
+  <div class="section-title text-center mb-55">
+  <h3 class="mb-20 wow fadeInDown" data-wow-delay=".2s">Sizin için Önerdiğimiz Araçlarımızdan Sadece Birkaç tanesi</h3>
+  </div>
+  </div>
+  </div>
+  </div>
+  <section class="ftco-section bg-light">
+    <div class="container">
+      <div class="row">
+        <div *ngFor="let car of cars.slice(0,3)" class="col-md-4" >
+          <div class="car-wrap rounded" style="background-color:white;">
+            <img src="{{defaultPath}}{{car.imagePath[0]}}" class="col-md-12" style=" height: 14rem;">
+                        <div class="text">
+              <h5 class="mb-0"><a>Marka: {{car.brandName}}</a></h5>
+              <div class="d-flex mb-3">
+                <span class="text-dark">Model: {{car.modelName}}</span>
+                <p class="price ml-auto">₺{{car.dailyPrice}} <span>/Günlük</span></p>
+              </div>
+            <p><a routerLink="/carDetail/{{car.carId}}"class="btn btn-primary py-2 ml-1">Aracın Detayı</a></p>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+  </section>
+</section>
