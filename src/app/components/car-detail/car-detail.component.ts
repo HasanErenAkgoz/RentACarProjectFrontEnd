@@ -5,6 +5,7 @@ import { CarDetail } from 'src/app/models/carDetail';
 import { Image } from 'src/app/models/ımage';
 import { CarDetailService } from 'src/app/services/car-detail.service';
 import { CarImagesService } from 'src/app/services/car-images.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-car-detail',
@@ -12,23 +13,31 @@ import { CarImagesService } from 'src/app/services/car-images.service';
   styleUrls: ['./car-detail.component.css'],
 })
 export class CarDetailComponent implements OnInit {
-  getCarDetail: CarDetail;
+  getCarDetail: CarDetail[];
   carImages: Image[];
   defaultPath: string = 'https://localhost:44323/images/';
   dataLoaded: boolean = false;
+  carDetailsLoad=false;
   controlPrev: Boolean = false;
+  rentalControl = false;
+  rentalMessage="";
+
+
   constructor(
     private carDetailService: CarDetailService,
     private carImageService: CarImagesService,
+    private rentalService:RentalService,
     private activatedRoute: ActivatedRoute,
     private toastrService:ToastrService
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      if (params['carId']) {
-        this.getCarDetailByCarId(params['carId']);
-        this.getCarImage(params['carId']);
+      if (params["carId"]) {
+        this.getCarDetailByCarId(params["carId"]);
+        this.getCarImage(params["carId"]);
+        this.getCarRentalControl(params["carId"])
+
       } else this.dataLoaded = false;
     });
   }
@@ -37,6 +46,8 @@ export class CarDetailComponent implements OnInit {
     this.carDetailService.getCarDetailByCarId(carId).subscribe((response) => {
       this.getCarDetail = response.data;
       this.dataLoaded = true;
+      this.carDetailsLoad=response.success;
+
     });
   }
   getCarImage(carId: number) {
@@ -48,9 +59,14 @@ export class CarDetailComponent implements OnInit {
      }
     });
   }
-
   addToCart(car:CarDetail){
     this.toastrService.success("Araç Sepete Eklendi",car.brandName+" "+car.modelName)
   }
-
+  getCarRentalControl(carId:number) {
+    this.rentalService.getRentalCarControl(carId).subscribe((response) => {
+      this.rentalControl=response.success;
+      this.rentalControl=true;
+      this.rentalMessage=response.message;
+    });
+  }
 }

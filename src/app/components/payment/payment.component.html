@@ -1,0 +1,154 @@
+<app-banner></app-banner>
+
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <h2>Ödeme Ekranı</h2>
+    </div>
+
+    <button *ngIf="paymentWait == true" class="btn btn-primary" type="button"disabled>
+      <span class="spinner-border spinner-border-sm" role="status"aria-hidden="true"></span>
+        Banka ile iletişim kuruluyor...
+    </button>
+
+    <div *ngIf="paymentSuccess" class="card text-white bg-success">
+      <div class="card-body">
+        <h5 class="card-title">Ödeme İşlemi Başarılı</h5>
+        <p class="card-text">Araç Kiralandı.</p>
+      </div>
+    </div>
+
+    <div *ngIf="paymentError" class="card text-white bg-danger">
+      <div class="card-body">
+        <h5 class="card-title">Ödeme Alınamadı!</h5>
+        <p class="card-text">....</p>
+      </div>
+      <br>
+    </div>
+
+    <div *ngIf="paymentSuccess == false  && paymentWait==false" class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Rezervasyon </span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">{{rentDate}}</h6>
+              <small class="text-muted">Başlangıç Tarihi</small>
+            </div>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">{{rentEndDate}}</h6>
+                <small class="text-muted">Bitiş Tarihi</small>
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">{{totalDay}}</h6>
+                <small class="text-muted">Gün</small>
+              </div>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">{{dailyPrice}} TL</h6>
+                <small class="text-muted">Günlük Ücret</small>
+              </div>
+            </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Toplam</span>
+            <strong>{{totalPrice}} TL</strong>
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="col-md-7 col-lg-8">
+        <div class="row gy-3">
+          <div class="col-md-12">
+            <label for="cc-name" class="form-label">Kayıtlı Kredi Kartlarınız</label>
+            <select class="form-select" (change)="cardChange($event)" [(ngModel)]="creditCardId" aria-label="Default select example">
+              <option *ngFor="let card of creditCards" [value]="card.id">{{card.fullName}} - {{card.number}}</option>
+            </select>
+          </div>
+        </div>
+        <br>
+
+        <form [formGroup]="paymentAddForm" class="needs-validation" novalidate>
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label for="cc-name" class="form-label">Kredi Kartı Sahibi</label>
+              <input formControlName="fullName" type="text" class="form-control" id="cc-name"  required>
+              <small class="text-muted">Kredi Kartı Üzerinde Yazan İsim</small>
+              <div class="invalid-feedback">
+                Name on card is required
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="cc-number" class="form-label">Kredi Kartı Numarası</label>
+              <input formControlName="number" [(ngModel)]="cardNumber" type="text" class="form-control" id="cc-number"  required>
+              <div class="invalid-feedback">
+                Credit card number is required
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="cc-expiration" class="form-label">Son Kullanım Ay</label>
+              <input formControlName="expirationMonth"  type="text" class="form-control" id="cc-expiration" placeholder="" required>
+              <div class="invalid-feedback">
+                Expiration date required
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="cc-expiration" class="form-label">Son Kullanım Yıl</label>
+              <input formControlName="expirationYear" type="text" class="form-control" id="cc-expiration" placeholder="" required>
+              <div class="invalid-feedback">
+                Expiration date required
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="cc-cvv" class="form-label">CVV</label>
+              <input formControlName="ccv" type="text" class="form-control" id="cc-cvv" placeholder="" required>
+              <div class="invalid-feedback">
+                Security code required
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <button style="margin-bottom: 1rem;" (click)="paymentAdd()" class="w-100 btn btn-success btn-lg" type="submit">Ödeme Yap</button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+<button [hidden]="true" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cardSaveModal" #btnCardSave>
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="cardSaveModal" tabindex="-1" aria-labelledby="cardSaveModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cardSaveModalLabel"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card-2-front-fill" viewBox="0 0 16 16">
+          <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zm0 3a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/>
+        </svg> Kredi kartı bilgileriniz kayıt edilsin mi?</h5>
+        <button #cardSaveModalClose type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Kredi kartınızı kayıt ederek bir sonraki ödemelerinizi daha kolay gerçekleştirebilirsiniz.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+        <button (click)="creditCardAdd()" type="button" class="btn btn-success">Kaydet</button>
+      </div>
+    </div>
+  </div>
+</div>

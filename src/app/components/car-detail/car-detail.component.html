@@ -1,31 +1,5 @@
-<section
-  class="hero-section"
-  id="background"
-  style="
-    background-image: url('../../../assets/img/5bea31f180866296289137bf9d2e9a8e\ \(1\).jpg');
-  "
-  data-stellar-background-ratio="0.5"
->
-  <div class="overlay"></div>
-  <div class="container">
-    <div
-      class="
-        row
-        no-gutters
-        slider-text
-        js-fullheight
-        align-items-end
-        justify-content-start
-      "
-    >
-      <div class="col-md-9 ftco-animate pb-5">
-        <h2 class="mb-3 bread" style="color: black">
-          Arabanı seç ve mükemmel yolculuğuna başla
-        </h2>
-      </div>
-    </div>
-  </div>
-</section>
+<app-banner></app-banner>
+
 <br />
 <div class="container">
   <div
@@ -70,8 +44,9 @@
   </div>
 </div>
 <br>
+<div *ngFor="let car of getCarDetail">
 <div class="title text-center ">
-  <h3>{{getCarDetail.brandName}} {{getCarDetail.modelName}} </h3>
+  <h3>{{car.brandName}} {{car.modelName}} </h3>
 </div>
 <hr>
 <div class="container">
@@ -79,59 +54,38 @@
 <div class="col-md-2 text-center  ">
 <img src="../../../assets/img/Km.png">
 <br>
-<Span>Kilometre: {{getCarDetail.km}} Km</Span>
+<Span>Kilometre: {{car.km}} Km</Span>
 </div>
 <div class="col-md-2 text-center">
   <img src="../../../assets/img/schedule.png">
 <br>
-<span>Aracın Yılı.: {{getCarDetail.year}}</span>
+<span>Aracın Yılı.: {{car.year}}</span>
 </div>
 <div class="col-md-2 text-center">
   <img src="../../../assets/img/power.png">
 <br>
-<span>Motor Gücü: {{getCarDetail.motorHp}} Hp</span>
+<span>Motor Gücü: {{car.motorHp}} Hp</span>
 </div>
 <div class="col-md-2 text-center">
   <img src="../../../assets/img/color-circle.png">
 <br>
-<span>Aracın Rengi: {{getCarDetail.color}}</span>
+<span>Aracın Rengi: {{car.color}}</span>
 </div>
 <div class="col-md-2 text-center">
   <img src="../../../assets/img/best-price.png">
 <br>
-<span>Günlük Ücret: {{getCarDetail.dailyPrice}} ₺</span>
+<span>Günlük Ücret: {{car.dailyPrice}} ₺</span>
+</div>
 </div>
   </div>
   <br>
+</div>
 <div class="justify-content-center align-items-center text-center">
-  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Aracı Kiralayın
-  </button>
-    <button (click)="addToCart(getCarDetail)"  type="button" class="btn btn-primary" style="margin-left: 1rem;">Sepete Ekle</button>
+  <button *ngIf="rentalControl == true" type="button"  class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#rentalModal">Kirala</button>
+  <button *ngIf="rentalControl == false" type="button" class="btn btn-secondary btn-lg" disabled>{{ rentalMessage }}</button>
 
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Araç Ekle</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="post">
-          <label>Aracın Plakası</label>
-          <select class="form-select">
-            <option>ss</option>
-          </select>
+<app-rental-add *ngIf="rentalControl == true" [car]="getCarDetail"></app-rental-add>
 
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 <br />
+

@@ -35,7 +35,6 @@ button:focus,
 }
 
 a:hover {
-  transition: all 0.3s ease-out 0s;
   color: #365ae1;
 }
 

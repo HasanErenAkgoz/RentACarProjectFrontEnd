@@ -15,12 +15,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { FooterComponent } from './components/pages/footer/footer.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrandFilterComponent } from './components/brand-filter/brand-filter.component';
 import { CartSummeryComponent } from './components/cart-summery/cart-summery.component';
+import { RentalAddComponent } from './components/rental-add/rental-add.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { BannerComponent } from './components/pages/banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { CartSummeryComponent } from './components/cart-summery/cart-summery.com
     FilterPipePipe,
     BrandFilterComponent,
     CartSummeryComponent,
+    RentalAddComponent,
+    PaymentComponent,
+    BannerComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,8 @@ import { CartSummeryComponent } from './components/cart-summery/cart-summery.com
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({ positionClass: 'toast-bottom-right' }),
+    ReactiveFormsModule,
+    ToastrModule.forRoot({positionClass:"toast-bottom-right",closeButton: true}),
   ],
   providers: [],
   bootstrap: [AppComponent],

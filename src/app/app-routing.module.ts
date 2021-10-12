@@ -4,6 +4,7 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
 import { CarComponent } from './components/car/car.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { HomeComponent } from './components/pages/home/home.component';
+import { PaymentComponent } from './components/payment/payment.component';
 import { CarService } from './services/car.service';
 
 const routes: Routes = [
@@ -12,6 +13,8 @@ const routes: Routes = [
   {path:"carDetail/:carId",component:CarDetailComponent},
   {path:"cars/brandId",component:CarComponent},
   {path:"cars/filter/:brandId",component:CarComponent},
+  {path:"peyment",component:PaymentComponent}
+
 
 ];
 
