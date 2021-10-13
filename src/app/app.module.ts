@@ -24,6 +24,7 @@ import { CartSummeryComponent } from './components/cart-summery/cart-summery.com
 import { RentalAddComponent } from './components/rental-add/rental-add.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { BannerComponent } from './components/pages/banner/banner.component';
+import { BrandAddComponent } from './components/brand-add/brand-add.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { BannerComponent } from './components/pages/banner/banner.component';
     RentalAddComponent,
     PaymentComponent,
     BannerComponent,
+    BrandAddComponent,
   ],
   imports: [
     BrowserModule,

@@ -139,7 +139,7 @@ export class PaymentComponent implements OnInit {
   }
 
   addRental() {
-    if (localStorage.getItem('payment-data') != null) {
+    if (localStorage.getItem('payment-datas') != null) {
       let rentalModel = Object.assign(
         {},
         JSON.parse(localStorage.getItem('payment-data') || '{}')
