@@ -61,7 +61,7 @@ export class RentalAddComponent implements OnInit {
       rentDate: [this.minDate, Validators.required],
       rentEndDate: [this.minDate, Validators.required],
       customerInfoId: ['', Validators.required],
-      dailyPrice: [this.car[0].dailyPrice, Validators.required],
+      dailyPrice: [this.car[0].dailyPrice+this.car[0].dailyPrice*18/100, Validators.required],
       totalPrice: [this.car[0].dailyPrice, Validators.required],
       totalDay: [1, Validators.required],
     });
@@ -89,10 +89,11 @@ export class RentalAddComponent implements OnInit {
         }
          else
           {
+
             this.findeksError = false;
-          this.findeksMsg = response.message.toString();
+          this.findeksMsg = "Findex Puanı Yetersiz";
           this.findeksLoad = false;
-          this.toastr.error(response.message);
+          this.toastr.error("Findex Puanı Yetersiz");
         }
       });
   }
@@ -108,7 +109,7 @@ export class RentalAddComponent implements OnInit {
       var difference = date1.getTime() - date2.getTime();
       var numberOfDays = Math.ceil(difference / (1000 * 3600 * 24));
       this.totalDay = numberOfDays + 1;
-      this.totalPrice = this.totalDay * this.car[0].dailyPrice;
+      this.totalPrice = this.totalDay * (this.car[0].dailyPrice+this.car[0].dailyPrice*18/100);
     }
   }
   paymentRoute() {

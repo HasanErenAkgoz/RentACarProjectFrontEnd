@@ -1,3 +1,4 @@
+<app-navi></app-navi>
 <app-banner></app-banner>
 <div *ngIf="dataLoaded" clas class="container">
   <div>
@@ -13,7 +14,6 @@
               <option
                 *ngFor="let brand of brandList"
                 [value]="brand.id"
-                [selected]="setCurrentBrand(brand.id)"
               >
                 {{ brand.name }}
               </option>
@@ -43,6 +43,7 @@
                   placeholder="Model adı giriniz"
                 />
               </div>
+
             </div>
           </div>
         </div>
@@ -79,7 +80,7 @@
             <li class="list-group-item">Renk: {{ car.color }}</li>
             <li class="list-group-item">Günlük Ücret {{ car.dailyPrice }} ₺</li>
             <li class="list-group-item">
-              KDV Dahil Günlük Ücret {{ car.dailyPrice | vatAdded: 18 }} ₺
+              KDV Dahil Günlük Ücret {{ car.dailyPrice | vatAdded:18}} ₺
             </li>
             <li class="list-group-item">
               <a
@@ -94,9 +95,10 @@
       </div>
     </div>
     <br>
-    <div *ngIf="empty==true" class="alert alert-danger text text-center">
+    <div *ngIf="empty==true || filterText" class="alert alert-danger text text-center">
 <h4>Kriterlerinize Uygun Araç Bulunamamaktadır.</h4>
     </div>
   </div>
 </div>
 <br />
+<app-footer></app-footer>

@@ -25,6 +25,15 @@ import { RentalAddComponent } from './components/rental-add/rental-add.component
 import { PaymentComponent } from './components/payment/payment.component';
 import { BannerComponent } from './components/pages/banner/banner.component';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
+import { NavbarComponent } from './components/admin-panel/navbar/navbar.component';
+import { SidebarComponent } from './components/admin-panel/sidebar/sidebar.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { AdminCarListComponent } from './components/admin-panel/admin-car-list/admin-car-list.component';
+import { DataTablesModule } from "angular-datatables";
+import { AdminCarDetailComponent } from './components/admin-panel/admin-car-detail/admin-car-detail.component';
+import { CarUpdateComponent } from './components/admin-panel/car-update/car-update.component';
+import { AdminCarAddComponent } from './components/admin-panel/admin-car-add/admin-car-add.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -48,17 +57,31 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
     PaymentComponent,
     BannerComponent,
     BrandAddComponent,
+    AdminPanelComponent,
+    NavbarComponent,
+    SidebarComponent,
+    AdminCarListComponent,
+    AdminCarDetailComponent,
+    CarUpdateComponent,
+    AdminCarAddComponent,
+    LoginComponent,
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule,
     ReactiveFormsModule,
+    DataTablesModule,
+    BrowserAnimationsModule,
     ToastrModule.forRoot({positionClass:"toast-bottom-right",closeButton: true}),
+
   ],
+
   providers: [],
   bootstrap: [AppComponent],
+
 })
 export class AppModule {}

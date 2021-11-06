@@ -1,0 +1,119 @@
+Modal
+<div
+  class="modal fade"
+  id="rentalModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Araç Ekleme</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form [formGroup]="carAddForm" >
+            <div class="row">
+              <div class="col-md-12">
+                <label><span>Aracınızın Plakasını Giriniz</span></label>
+                <input
+                  type="text"
+                  placeholder="Lütfen Aracınızın Plakasını Giriniz"
+                  class="form-control"
+                  required
+                  formControlName="plate"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <label>Aracın Markası</label>
+                <select
+                  name="brandId"
+                  class="form-select"
+                  [(ngModel)]="brandId"
+                  (click)="getModels(brandId)"
+                  formControlName="brandId"
+
+                >
+                  <option
+                    class="option"
+                    *ngFor="let brand of brandList"
+                    [ngValue]="brand.id"
+                    [selected]="brand.id == 1"
+                  >
+                    {{ brand.name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                  <label>Aracın Modeli </label>
+                  <select
+                    class="form-select"
+                    aria-label="Model adı"
+                    formControlName="modelId"
+
+                  >
+                    <option
+                    class="options"
+                      *ngFor="let model of models"
+                      [ngValue]="model.modelId"
+                      [selected]="model.modelId == 1"
+                      >
+                      {{ model.modelName }}
+                    </option>
+                  </select>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <label><span>Model Yılı</span></label>
+                <input type="text" required class="form-control" formControlName="year"  />
+              </div>
+              <div class="col-md-4">
+                <label><span>Kilometre</span></label>
+                <input type="text" required class="form-control" formControlName="km" />
+              </div>
+              <div class="col-md-4">
+                <label><span>Motor Hp</span></label>
+                <input type="text" required class="form-control" formControlName="motorHp" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <label><span>Rengi</span></label>
+                <input type="text" required class="form-control" formControlName="color" />
+              </div>
+              <div class="col-md-4">
+                <label><span>Günlük Ücret</span></label>
+                <input type="number" required class="form-control" formControlName="dailyPrice" />
+              </div>
+              <div class="col-md-4">
+                <label><span>MinFindexPuan </span></label>
+                <input type="number" required class="form-control" formControlName="minFindeksScore" />
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Vazgeç
+        </button>
+
+        <button type="button" class="btn btn-primary" (click)="carAdd() ">Kaydet</button>
+      </div>
+    </div>
+  </div>
+</div>

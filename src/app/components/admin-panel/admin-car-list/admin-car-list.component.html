@@ -1,0 +1,38 @@
+
+<div class="d-flex toggled" id="wrapper">
+  <app-sidebar style="width: 16rem"></app-sidebar>
+  <div id="page-content-wrapper">
+    <app-navbar></app-navbar>
+    <div class="container">
+      <h3 class="text text-center text-dark" >Araçlarımız</h3>
+            <table id="example" datatable [dtOptions]="dtOptions" class="table table-striped table-hover" style="width:100%">
+              <thead class="table-dark">
+                  <tr>
+                      <th>#</th>
+                      <th>Plaka</th>
+                      <th>Marka Model</th>
+                      <th>Yıl</th>
+                      <th>Rengi</th>
+                      <th>Günlük Ücret</th>
+                      <th>Aracın Detayı</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr  *ngFor="let car of carList">
+                    <td>{{car.carId}}</td>
+                      <td>{{car.plate}}</td>
+                      <td>{{car.brandName}} {{car.modelName}}</td>
+                      <td>{{car.year}}</td>
+                      <td>{{car.color}}</td>
+                      <td>{{car.dailyPrice}}</td>
+                      <td>
+                        <button  routerLink="/admin/carDetail/{{ car.carId }}" type="button" class="btn btn-success">Detay</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+          <button  type="button"  class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#rentalModal">Araç Ekle</button>
+        </div>
+        </div>
+      </div>
+      <app-admin-car-add></app-admin-car-add>

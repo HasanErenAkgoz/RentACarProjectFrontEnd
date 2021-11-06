@@ -1,0 +1,95 @@
+<div class="d-flex toggled" id="wrapper">
+<app-sidebar style="width: 16rem"></app-sidebar>
+<div id="page-content-wrapper">
+<app-navbar></app-navbar>
+<div class="container">
+  <div
+    style="max-width: 79%; margin: auto"
+    id="carouselExampleFade"
+    class="carousel slide carousel-fade"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      <div
+        *ngFor="let carImage of carImages; index as i; first as firstImage"
+        [ngClass]="{ active: firstImage }"
+        class="carousel-item active"
+      >
+        <img
+          [src]="defaultPath + carImage.imagePath"
+          class="d-block w-100"
+          style="height: 25rem"
+        />
+      </div>
+    </div>
+    <div >
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleFade"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">İleri</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleFade"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Geri</span>
+      </button>
+    </div>
+  </div>
+</div>
+<br>
+
+<div *ngFor="let car of getCarDetail">
+  <div class="title text-center ">
+    <h3>{{car.brandName}} {{car.modelName}} </h3>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="row justify-content-center align-items-center">
+  <div class="col-md-2 text-center  ">
+  <img src="../../../assets/img/Km.png">
+  <br>
+  <Span>Kilometre: {{car.km}} Km</Span>
+  </div>
+  <div class="col-md-2 text-center">
+    <img src="../../../assets/img/schedule.png">
+  <br>
+  <span>Aracın Yılı.: {{car.year}}</span>
+  </div>
+  <div class="col-md-2 text-center">
+    <img src="../../../assets/img/power.png">
+  <br>
+  <span>Motor Gücü: {{car.motorHp}} Hp</span>
+  </div>
+  <div class="col-md-2 text-center">
+    <img src="../../../assets/img/color-circle.png">
+  <br>
+  <span>Aracın Rengi: {{car.color}}</span>
+  </div>
+  <div class="col-md-2 text-center">
+    <img src="../../../assets/img/best-price.png">
+  <br>
+  <span>Günlük Ücret: {{car.dailyPrice}} ₺</span>
+  </div>
+  </div>
+    </div>
+    <br>
+    <div class="text text-center" >
+      <button  (click)="carDelete(car)" type="button" class="btn btn-danger" style="margin-right: 1rem;">Sil</button>
+      <button type="button" routerLink="/admin/car/update/{{car.carId}}" class="btn btn-warning">Güncelle</button>
+
+    </div>
+  </div>
+
+</div>
+
+
+</div>
+

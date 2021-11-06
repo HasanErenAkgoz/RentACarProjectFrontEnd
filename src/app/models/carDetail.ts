@@ -11,5 +11,6 @@ export interface CarDetail{
   color:string;
   dailyPrice:number;
   imagePath:string[];
+  minFindeksScore:number;
   Status:boolean
 }

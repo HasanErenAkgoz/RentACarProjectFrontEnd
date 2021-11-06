@@ -1,0 +1,189 @@
+<div class="d-flex toggled" id="wrapper">
+  <app-sidebar style="width: 16rem"></app-sidebar>
+  <div id="page-content-wrapper">
+    <app-navbar></app-navbar>
+    <br />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Araç Bilgileri</h4>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="carUpdateForm">
+                <div class="row">
+                  <div class="col-md-6 pr-1">
+                    <div class="form-group">
+                      <label>Aracın Id Bilgisi </label>
+                      <input
+                        type="number"
+                        readonly
+                        class="form-control"
+                        formControlName="carId"
+                        [value]="carInfo[0].carId"
+                        [placeholder]="carInfo[0].carId"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-6 px-1">
+                    <div class="form-group">
+                      <label>Plaka</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="plate"
+                        [value]="carInfo[0].plate"
+                        [placeholder]="carInfo[0].plate"
+
+                      />
+                    </div>
+                  </div>
+                </div>
+               <div class="row">
+                  <div class="col-md-6 pr-1">
+                    <div class="form-group">
+                      <label>Aracın Markası</label>
+                      <select
+                        [(ngModel)]="brandId"
+                        (click)="getModels(brandId)"
+                        class="form-select"
+                        aria-label="Model"
+                        formControlName="brandId"
+                      >
+                        <option
+                          *ngFor="let brand of brandList"
+                          [ngValue]="brand.id"
+                        >
+                          {{ brand.name }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 pl-1">
+                    <div class="form-group">
+                      <label>Aracın Modeli </label>
+                      <select
+                        formControlName="modelId"
+                        class="form-select"
+                        aria-label="Model adı"
+                      >
+                        <option
+                          *ngFor="let model of models"
+                          [ngValue]="model.modelId"
+                        >
+                          {{ model.modelName }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                      <label>Aracın Yılı</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Aracınızın Model Yılı"
+                        formControlName="year"
+                        [value]="carInfo[0].year"
+                        [placeholder]="carInfo[0].year"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-4 px-1">
+                    <div class="form-group">
+                      <label>Aracın Kilometresi</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Aracınızın Kilometresi"
+                        formControlName="km"
+                        [value]="carInfo[0].km"
+                        [placeholder]="carInfo[0].km"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Aracın Motor Gücü</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Aracın Motor Gücü"
+                        formControlName="motorHp"
+                        [value]="carInfo[0].motorHp"
+                        [placeholder]="carInfo[0].motorHp"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                      <label>Aracın Rengi</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Aracın Rengi"
+                        formControlName="color"
+                        [value]="carInfo[0].color"
+                        [placeholder]="carInfo[0].color"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-4 px-1">
+                    <div class="form-group">
+                      <label> Günlük Ücreti ₺</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Country"
+                        formControlName="dailyPrice"
+                        [value]="carInfo[0].dailyPrice"
+                        [placeholder]="carInfo[0].dailyPrice"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Findeks Puanı</label>
+                      <input
+                        type="number  "
+                        class="form-control"
+                        formControlName="minFindeksScore"
+                        [value]="carInfo[0].minFindeksScore"
+                        [placeholder]="carInfo[0].minFindeksScore"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <input
+                  type="text"
+                  hidden
+                  formControlName="status"
+                  value="true"
+                />
+              </form>
+            </div>
+            <div class="card-footer">
+              <button
+                style="margin-right: 10px"
+                class="btn btn-fill btn-warning"
+                (click)="updateCar()"
+              >
+                Güncelle
+              </button>
+              <button class="btn btn-fill btn-success">
+                Aracın Resimlerini Güncelle
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

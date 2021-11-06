@@ -137,7 +137,6 @@ export class PaymentComponent implements OnInit {
       this.toastr.error('Eksik veya yanlış Bilgi Girdiniz Lütfen Formu Kontrol');
     }
   }
-
   addRental() {
     if (localStorage.getItem('payment-datas') != null) {
       let rentalModel = Object.assign(
@@ -163,7 +162,6 @@ export class PaymentComponent implements OnInit {
       );
     }
   }
-
   cardChange(event: any) {
     let selectedCard = this.creditCards.find((c) => c.id == this.creditCardId);
     this.paymentAddForm.get('fullName')?.setValue(selectedCard?.fullName);

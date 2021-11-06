@@ -1,0 +1,330 @@
+#wrapper {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+    height: 100%;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.card {
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    margin-bottom: 30px;
+}
+
+.card .card-image {
+    width: 100%;
+    overflow: hidden;
+    height: 260px;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.card .card-image img {
+    width: 100%;
+}
+
+.card .filter {
+    position: absolute;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.68);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.card .filter .btn {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.card:hover .filter {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.card .btn-hover {
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.card:hover .btn-hover {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+.card .card-body {
+    padding: 15px 15px 10px 15px;
+}
+
+.card .card-header {
+    padding: 15px 15px 0;
+    background-color: #FFFFFF;
+    border-bottom: none !important;
+}
+
+.card .card-category,
+.card label {
+    font-size: 14px;
+    font-weight: 400;
+    color: #9A9A9A;
+    margin-bottom: 0px;
+}
+
+.card .card-category i,
+.card label i {
+    font-size: 16px;
+}
+
+.card label {
+    font-size: 12px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.card .card-title {
+    margin: 0;
+    color: #333333;
+    font-weight: 300;
+}
+
+.card .avatar {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.card .description {
+    font-size: 14px;
+    color: #333;
+}
+
+.card .card-footer {
+    padding-top: 0;
+    background-color: transparent;
+    line-height: 30px;
+    border-top: none !important;
+    font-size: 14px;
+}
+
+.card .card-footer .legend {
+    padding: 5px 0;
+}
+
+.card .card-footer hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.card .stats {
+    color: #a9a9a9;
+}
+
+.card .card-footer div {
+    display: inline-block;
+}
+
+.card .author {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.card .author i {
+    font-size: 14px;
+}
+
+.card h6 {
+    font-size: 12px;
+    margin: 0;
+}
+
+.card.card-separator:after {
+    height: 100%;
+    right: -15px;
+    top: 0;
+    width: 1px;
+    background-color: #DDDDDD;
+    card-body: "";
+    position: absolute;
+}
+
+.card .ct-chart {
+    margin: 30px 0 30px;
+    height: 245px;
+}
+
+.card .ct-label {
+    font-size: 1rem !important;
+}
+
+.card .table tbody td:first-child,
+.card .table thead th:first-child {
+    padding-left: 15px;
+}
+
+.card .table tbody td:last-child,
+.card .table thead th:last-child {
+    padding-right: 15px;
+    display: inline-flex;
+}
+
+.card .alert {
+    border-radius: 4px;
+    position: relative;
+}
+
+.card .alert.alert-with-icon {
+    padding-left: 65px;
+}
+
+.card-stats .card-body {
+    padding: 15px 15px 0px;
+}
+
+.card-stats .card-body .numbers {
+    font-size: 1.8rem;
+    text-align: right;
+}
+
+.card-stats .card-body .numbers p {
+    margin-bottom: 0;
+}
+
+.card-stats .card-footer {
+    padding: 0px 15px 10px 15px;
+}
+
+.card-stats .icon-big {
+    font-size: 3em;
+    min-height: 64px;
+}
+
+.card-stats .icon-big i {
+    font-weight: 700;
+    line-height: 59px;
+}
+
+.card-user .card-image {
+    height: 110px;
+}
+
+.card-user .card-image-plain {
+    height: 0;
+    margin-top: 110px;
+}
+
+.card-user .author {
+    text-align: center;
+    text-transform: none;
+    margin-top: -70px;
+}
+
+.card-user .avatar {
+    width: 124px;
+    height: 124px;
+    border: 5px solid #FFFFFF;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.card-user .avatar.border-gray {
+    border-color: #EEEEEE;
+}
+
+.card-user .title {
+    line-height: 24px;
+}
+
+.card-user .card-body {
+    min-height: 240px;
+}
+
+.card-user .card-footer,
+.card-price .card-footer {
+    padding: 5px 15px 10px;
+}
+
+.card-user hr,
+.card-price hr {
+    margin: 5px 15px;
+}
+
+.card-plain {
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.card-plain .card-image {
+    border-radius: 4px;
+}
+
+.card.card-plain {
+    border: none !important;
+}
+
+.card.card-plain .card-header {
+    background-color: transparent !important;
+}
+
+.main-panel {
+  background: rgba(203, 203, 210, 0.15);
+  position: relative;
+  float: right;
+  width: calc(100% - 260px);
+  min-height: 100%;
+}
+.form-group{
+  margin-top: 0.5rem;
+}

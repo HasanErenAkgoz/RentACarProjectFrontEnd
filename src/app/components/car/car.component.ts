@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Brand } from 'src/app/models/brand';
 import { CarDetail } from 'src/app/models/carDetail';
 import { BrandService } from 'src/app/services/brand.service';
+import { CarDetailService } from 'src/app/services/car-detail.service';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class CarComponent implements OnInit {
   defaultPath: string = 'https://localhost:44323/images/';
   defaultImage: string = 'default.jpg';
   constructor(
-    private carService: CarService,
+    private carDetailService: CarDetailService,
     private brandService: BrandService,
     private activatedRout:ActivatedRoute
   ) {}
@@ -34,10 +35,11 @@ export class CarComponent implements OnInit {
     this.getBrand();
   }
   getCars() {
-    this.carService.getCars().subscribe((response) => {
+    this.carDetailService.getCarsDetail().subscribe((response) => {
       this.cars = response.data;
       this.dataLoaded = true;
       this.empty=false;
+      console.log(response.message)
     });
   }
   getBrand(){
@@ -51,7 +53,7 @@ export class CarComponent implements OnInit {
   }
 
 getCarListBrandId(brandId:number){
-  this.carService.getCarListBrandId(brandId).subscribe(response=>{
+  this.carDetailService.getCarListBrandId(brandId).subscribe(response=>{
     this.cars=response.data;
     if(this.cars.length==0)
     {

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { CarDetailService } from 'src/app/services/car-detail.service';
 import { CarService } from 'src/app/services/car.service';
 import { Car } from '../../../models/car';
 import { CarDetail } from '../../../models/carDetail';
@@ -15,13 +16,13 @@ export class ServiceComponent implements OnInit {
   dataLoaded:boolean=false;
   defaultPath:string="https://localhost:44323/images/"
 ;
-  constructor(private carService:CarService) { }
+  constructor(private carDetailService:CarDetailService) { }
 
   ngOnInit(): void {
     this.getCars();
   }
   getCars(){
-    this.carService.getCars().subscribe((response=>{
+    this.carDetailService.getCarsDetail().subscribe((response=>{
       this.cars=response.data;
       this.dataLoaded=true;
     }))

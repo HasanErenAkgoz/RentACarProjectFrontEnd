@@ -9,5 +9,6 @@ export interface Car{
   color:string;
   dailyPrice:number;
   imagePath:string[];
+  minFindeksScore:number;
   Status:boolean
 }
