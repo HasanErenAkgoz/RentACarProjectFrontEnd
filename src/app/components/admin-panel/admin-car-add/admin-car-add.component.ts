@@ -74,11 +74,11 @@ export class AdminCarAddComponent implements OnInit {
          (response) => {
            this.toasterService.success(response.message, 'Başarılı');
          },
-         (error) => {
-           if (error.error.Errors.length > 0) {
-             for (let i = 0; i < error.error.Errors.length; i++) {
+         (ResponsError) => {
+           if (ResponsError.error.Errors.length > 0) {
+             for (let i = 0; i < ResponsError.error.Errors.length; i++) {
                this.toasterService.error(
-                 error.error.Errors[i].ErrorMessage,
+                ResponsError.error.Errors[i].ErrorMessage,
                  'Doğrulama hatası'
                );
              }

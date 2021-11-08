@@ -12,6 +12,9 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AdminGuard } from './guards/admin.guard';
+import { LoginGuard } from './guards/login.guard';
 import { CarService } from './services/car.service';
 
 const routes: Routes = [
@@ -23,16 +26,18 @@ const routes: Routes = [
   {path:"cars/filter/:brandId",component:CarComponent},
   {path:"peyment",component:PaymentComponent},
   //Admin Components
-  {path:"admin/dashboard",component:AdminPanelComponent},
-  {path:"admin/cars",component:AdminCarListComponent},
-  {path:"admin/carDetail/:carId",component:AdminCarDetailComponent},
-  {path:"admin/car/update/:carId",component:CarUpdateComponent},
-  {path:"admin/car/add",component:AdminCarAddComponent},
-  {path:"brand/Add",component:BrandAddComponent},
+  {path:"admin/dashboard",component:AdminPanelComponent,canActivate:[AdminGuard]},
+  {path:"admin/cars",component:AdminCarListComponent,canActivate:[LoginGuard]},
+  {path:"admin/carDetail/:carId",component:AdminCarDetailComponent,canActivate:[LoginGuard]},
+  {path:"admin/car/update/:carId",component:CarUpdateComponent,canActivate:[LoginGuard]},
+  {path:"admin/car/add",component:AdminCarAddComponent,canActivate:[LoginGuard]},
+  {path:"brand/Add",component:BrandAddComponent,canActivate:[LoginGuard]},
 
 
-  //Login
+  //Auth
   {path:"login",component:LoginComponent},
+  {path:"register",component:RegisterComponent},
+
 
 
 ];

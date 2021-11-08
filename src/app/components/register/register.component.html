@@ -1,0 +1,114 @@
+<div class="page-wrapper bg-warning font-robo">
+  <br />
+  <br />
+  <br />
+  <div class="wrapper wrapper--w960">
+    <div class="card card-2">
+      <div class="card-heading"></div>
+      <div class="card-body">
+        <h2 class="title">Kayıt Olun</h2>
+        <form [formGroup]="registerForm">
+          <div class="row row-space">
+            <div class="col-2">
+              <div class="input-group">
+                <input
+                  class="input--style-2"
+                  type="email"
+                  required
+                  placeholder="Email Adresiniz"
+                  formControlName="email"
+                />
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="input-group">
+                <input
+                  class="input--style-2"
+                  type="password"
+                  required
+                  placeholder="Şifreniz"
+                  formControlName="password"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row row-space">
+            <div class="col-2">
+              <div class="input-group">
+                <input
+                  class="input--style-2"
+                  required
+                  type="text"
+                  placeholder="Adınız"
+                  name="firstName"
+                  formControlName="firstName"
+                />
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="input-group">
+                <input
+                  class="input--style-2"
+                  required
+                  type="text"
+                  placeholder="Soyadınız"
+                  name="lastName"
+                  formControlName="lastName"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row row-space">
+            <div class="col-2">
+              <div class="input-group">
+                <input
+                  class="input--style-2"
+                  type="text"
+                  placeholder="Telefon Numaranız"
+                  required
+                  name="phoneNumber"
+                  formControlName="phoneNumber"
+                />
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="input-group">
+                <input
+                  class="input--style-2"
+                  type="number"
+                  placeholder="findeks Puanınız"
+                  required
+                  name="findeksScore"
+                  formControlName="findeksScore"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row row-space">
+            <div class="col-md-12">
+              <div class="input-group">
+                <input
+                  class="input--style-2"
+                  type="text"
+                  placeholder="Adresinizi Giriniz"
+                  required
+                  name="address"
+                  formControlName="address"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="p-t-10">
+            <button
+              class="btn btn--radius btn--green"
+              type="submit"
+              (click)="register()"
+            >
+              Kayıt Ol
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

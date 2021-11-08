@@ -11,7 +11,7 @@ import { ServiceComponent } from './components/pages/service/service.component';
 import { SectionComponent } from './components/pages/section/section.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
 import { CarComponent } from './components/car/car.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 import { FooterComponent } from './components/pages/footer/footer.component';
 import { VatAddedPipe } from './pipes/vat-added.pipe';
@@ -29,11 +29,13 @@ import { NavbarComponent } from './components/admin-panel/navbar/navbar.componen
 import { SidebarComponent } from './components/admin-panel/sidebar/sidebar.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { AdminCarListComponent } from './components/admin-panel/admin-car-list/admin-car-list.component';
-import { DataTablesModule } from "angular-datatables";
+import { DataTablesModule } from 'angular-datatables';
 import { AdminCarDetailComponent } from './components/admin-panel/admin-car-detail/admin-car-detail.component';
 import { CarUpdateComponent } from './components/admin-panel/car-update/car-update.component';
 import { AdminCarAddComponent } from './components/admin-panel/admin-car-add/admin-car-add.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -65,8 +67,7 @@ import { LoginComponent } from './components/login/login.component';
     CarUpdateComponent,
     AdminCarAddComponent,
     LoginComponent,
-
-
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,12 +77,15 @@ import { LoginComponent } from './components/login/login.component';
     ReactiveFormsModule,
     DataTablesModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({positionClass:"toast-bottom-right",closeButton: true}),
-
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      closeButton: true,
+    }),
   ],
 
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+    ],
   bootstrap: [AppComponent],
-
 })
 export class AppModule {}
