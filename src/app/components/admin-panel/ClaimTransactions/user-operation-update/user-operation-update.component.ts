@@ -38,7 +38,7 @@ export class UserOperationUpdateComponent implements OnInit {
   }
   createUserClaimUpdateForm() {
     this.userClaimUpdateForm = this.formBuilder.group({
-      id: [this.getUserOpertaionClaim.userClaimId, Validators.required],
+      id: [this.getUserOpertaionClaim.id, Validators.required],
       userId: [this.getUserOpertaionClaim.userId, Validators.required],
       operationClaimId: [this.claimId, Validators.required],
       status: [true, Validators.required],

@@ -23,7 +23,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let userOperation of userOperationInfo">
-            <td>{{ userOperation.userClaimId }}</td>
+            <td>{{ userOperation.id }}</td>
             <td>
               {{ userOperation.firstName + " " + userOperation.lastName }}
             </td>
@@ -34,7 +34,7 @@
               <button
               class="btn btn-success"
               routerLink="/admin/user/useroperationclaimadd/{{
-                userOperation.userClaimId
+                userOperation.id
               }}"
             >
               Yetki Ata
@@ -44,7 +44,7 @@
               <button
                 class="btn btn-warning"
                 routerLink="/admin/user/useroperationclaimupdate/{{
-                  userOperation.userClaimId
+                  userOperation.id
                 }}"
               >
                 Güncelle

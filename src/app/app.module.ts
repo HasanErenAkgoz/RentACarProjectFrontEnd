@@ -43,6 +43,8 @@ import { OperationClamComponent } from './components/admin-panel/ClaimTransactio
 import { OperationClaimAddComponent } from './components/admin-panel/ClaimTransactions/operation-claim-add/operation-claim-add.component';
 import { UserOpertaionClaimAddComponent } from './components/admin-panel/ClaimTransactions/user-opertaion-claim-add/user-opertaion-claim-add.component';
 import { UserOperationUpdateComponent } from './components/admin-panel/ClaimTransactions/user-operation-update/user-operation-update.component';
+import { CarRentalComponent } from './components/admin-panel/RentalTransactions/car-rental/car-rental.component';
+
 
 @NgModule({
   declarations: [
@@ -82,6 +84,8 @@ import { UserOperationUpdateComponent } from './components/admin-panel/ClaimTran
     OperationClaimAddComponent,
     UserOpertaionClaimAddComponent,
     UserOperationUpdateComponent,
+    CarRentalComponent,
+
   ],
   imports: [
     BrowserModule,

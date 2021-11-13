@@ -138,7 +138,8 @@ export class PaymentComponent implements OnInit {
     }
   }
   addRental() {
-    if (localStorage.getItem('payment-datas') != null) {
+
+    if (localStorage.getItem('payment-data') != null) {
       let rentalModel = Object.assign(
         {},
         JSON.parse(localStorage.getItem('payment-data') || '{}')
@@ -161,6 +162,8 @@ export class PaymentComponent implements OnInit {
         }
       );
     }
+
+   console.log("deneme")
   }
   cardChange(event: any) {
     let selectedCard = this.creditCards.find((c) => c.id == this.creditCardId);

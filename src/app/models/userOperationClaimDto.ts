@@ -1,5 +1,5 @@
 export interface UserOperationClaimDto {
-  userClaimId:number;
+  id:number;
   userId: number;
   email: string;
   firstName: string;

@@ -1,5 +1,6 @@
 export interface RentalDetail{
-  Id:number;
+  id:number;
+  plate:string;
   carInfoId:number;
   brandName:string;
   modelName:string;
@@ -10,4 +11,5 @@ export interface RentalDetail{
   rentEndDate:Date;
   returnDate:Date;
   deliveryStatus:boolean;
+  totalPrice:number;
 }

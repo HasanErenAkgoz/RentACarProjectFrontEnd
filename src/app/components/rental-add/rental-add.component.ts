@@ -62,17 +62,17 @@ export class RentalAddComponent implements OnInit {
       rentEndDate: [this.minDate, Validators.required],
       customerInfoId: ['', Validators.required],
       dailyPrice: [this.car[0].dailyPrice+this.car[0].dailyPrice*18/100, Validators.required],
-      totalPrice: [this.car[0].dailyPrice, Validators.required],
+      totalPrice: [this.totalPrice, Validators.required],
       totalDay: [1, Validators.required],
     });
   }
 
-  dateApply() {
-    this.date = new Date();
-    this.rentDate = this.datePipe.transform(this.date, 'yyyy-MM-dd');
-    this.rentEndDate = this.datePipe.transform(this.date, 'yyyy-MM-dd');
-    this.minDate = this.datePipe.transform(this.date, 'yyyy-MM-dd');
-  }
+    dateApply() {
+      this.date = new Date();
+      this.rentDate = this.datePipe.transform(this.date, 'yyyy-MM-dd');
+      this.rentEndDate = this.datePipe.transform(this.date, 'yyyy-MM-dd');
+      this.minDate = this.datePipe.transform(this.date, 'yyyy-MM-dd');
+    }
 
   onChangeEvent(event: any) {
     this.minDate = event.target.value;

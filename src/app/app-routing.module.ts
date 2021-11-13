@@ -23,47 +23,100 @@ import { OperationClamComponent } from './components/admin-panel/ClaimTransactio
 import { OperationClaimAddComponent } from './components/admin-panel/ClaimTransactions/operation-claim-add/operation-claim-add.component';
 import { UserOpertaionClaimAddComponent } from './components/admin-panel/ClaimTransactions/user-opertaion-claim-add/user-opertaion-claim-add.component';
 import { UserOperationUpdateComponent } from './components/admin-panel/ClaimTransactions/user-operation-update/user-operation-update.component';
+import { CarRentalComponent } from './components/admin-panel/RentalTransactions/car-rental/car-rental.component';
 
 const routes: Routes = [
   //User Components
-  {path:"",pathMatch:"full",component:HomepageComponent},
-  {path:"cars",component:CarComponent},
-  {path:"carDetail/:carId",component:CarDetailComponent},
-  {path:"cars/brandId",component:CarComponent},
-  {path:"cars/filter/:brandId",component:CarComponent},
-  {path:"peyment",component:PaymentComponent,canActivate:[LoginGuard]},
+  { path: '', pathMatch: 'full', component: HomepageComponent },
+  { path: 'cars', component: CarComponent },
+  { path: 'carDetail/:carId', component: CarDetailComponent },
+  { path: 'cars/brandId', component: CarComponent },
+  { path: 'cars/filter/:brandId', component: CarComponent },
+  { path: 'peyment', component: PaymentComponent, canActivate: [LoginGuard] },
   //Admin Components
-  {path:"admin/dashboard",component:AdminPanelComponent,canActivate:[LoginGuard]},
-  {path:"admin/cars",component:AdminCarListComponent,canActivate:[LoginGuard]},
-  {path:"admin/carDetail/:carId",component:AdminCarDetailComponent,canActivate:[LoginGuard]},
-  {path:"admin/car/update/:carId",component:CarUpdateComponent,canActivate:[LoginGuard]},
-  {path:"admin/car/add",component:AdminCarAddComponent,canActivate:[LoginGuard]},
-  {path:"admin/brand/Add",component:BrandAddComponent,canActivate:[LoginGuard]},
-  {path:"admin/brand/brandList",component:AdminBrandListComponent,canActivate:[LoginGuard]},
-  {path:"admin/customer/customerList",component:CustomerListComponent,canActivate:[LoginGuard]},
-  {path:"admin/claim/operationclaim",component:OperationClamComponent,canActivate:[LoginGuard]},
-  {path:"admin/claim/operationclaimadd",component:OperationClaimAddComponent,canActivate:[LoginGuard]},
-  {path:"admin/user/useroperationclaim",component:UserOperationClaimComponent,canActivate:[LoginGuard]},
-  {path:"admin/user/useroperationclaimadd",component:UserOpertaionClaimAddComponent,canActivate:[LoginGuard]},
-  {path:"admin/user/useroperationclaimupdate/:userClaimId",component:UserOperationUpdateComponent,canActivate:[LoginGuard]},
-  {path:"admin/user/useroperationclaimadd/:userClaimId",component:UserOpertaionClaimAddComponent,canActivate:[LoginGuard]},
-
-
-
-
-
-
+  {
+    path: 'admin/dashboard',
+    component: AdminPanelComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'admin/cars',
+    component: AdminCarListComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'admin/carDetail/:carId',
+    component: AdminCarDetailComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'admin/car/update/:carId',
+    component: CarUpdateComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'admin/car/add',
+    component: AdminCarAddComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'admin/brand/Add',
+    component: BrandAddComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'admin/brand/brandList',
+    component: AdminBrandListComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'admin/customer/customerList',
+    component: CustomerListComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'admin/claim/operationclaim',
+    component: OperationClamComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'admin/claim/operationclaimadd',
+    component: OperationClaimAddComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'admin/user/useroperationclaim',
+    component: UserOperationClaimComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'admin/user/useroperationclaimadd',
+    component: UserOpertaionClaimAddComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'admin/user/useroperationclaimupdate/:userClaimId',
+    component: UserOperationUpdateComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'admin/user/useroperationclaimadd/:userClaimId',
+    component: UserOpertaionClaimAddComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'admin/rental/carrental',
+    component: CarRentalComponent,
+    canActivate: [LoginGuard],
+  },
 
   //Auth
-  {path:"login",component:LoginComponent},
-  {path:"register",component:RegisterComponent},
-
-
-
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

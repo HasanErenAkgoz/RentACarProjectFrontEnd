@@ -1,0 +1,46 @@
+<div class="d-flex toggled" id="wrapper">
+  <app-sidebar style="width: 16rem"></app-sidebar>
+  <div id="page-content-wrapper">
+    <app-navbar></app-navbar>
+    <div class="container">
+      <div class="header text text-center">
+        <h4>Kiralama Tablosu</h4>
+      </div>
+      <br />
+      <div class="table col-md-12">
+        <table
+          class="table table-striped table-hover responsive"
+          datatable
+          datatable
+          [dtOptions]="dtOptions"
+          [dtTrigger]="dtTrigger"
+        >
+          <thead class="table-dark">
+            <tr>
+              <th>Plakası</th>
+              <th>Markası</th>
+              <th>Modeli</th>
+              <th>Müşteri Adı-Soyadı</th>
+              <th>Kiralama Tarihi</th>
+              <th>Geri Getirme Tarihi</th>
+              <th>Araç Teslim Alma</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rental of rentalList">
+              <td>{{ rental.plate }}</td>
+              <td>{{ rental.brandName }}</td>
+              <td>{{ rental.modelName }}</td>
+              <td>{{ rental.firstName }} {{ rental.lastName }}</td>
+              <td>{{ rental.rentDate }}</td>
+              <td>{{ rental.rentEndDate }}</td>
+              <td><button class="btn btn-warning" (click)="update(rental)">Aracı Teslim Al</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br />
+    </div>
+  </div>
+</div>
