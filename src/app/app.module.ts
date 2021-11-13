@@ -28,14 +28,21 @@ import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { NavbarComponent } from './components/admin-panel/navbar/navbar.component';
 import { SidebarComponent } from './components/admin-panel/sidebar/sidebar.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
-import { AdminCarListComponent } from './components/admin-panel/admin-car-list/admin-car-list.component';
+import { AdminCarListComponent } from './components/admin-panel/CarTransactions/admin-car-list/admin-car-list.component';
 import { DataTablesModule } from 'angular-datatables';
-import { AdminCarDetailComponent } from './components/admin-panel/admin-car-detail/admin-car-detail.component';
-import { CarUpdateComponent } from './components/admin-panel/car-update/car-update.component';
-import { AdminCarAddComponent } from './components/admin-panel/admin-car-add/admin-car-add.component';
+import { AdminCarDetailComponent } from './components/admin-panel/CarTransactions/admin-car-detail/admin-car-detail.component';
+import { CarUpdateComponent } from './components/admin-panel/CarTransactions/car-update/car-update.component';
+import { AdminCarAddComponent } from './components/admin-panel/CarTransactions/admin-car-add/admin-car-add.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { AdminBrandListComponent } from './components/admin-panel/admin-brand-list/admin-brand-list.component';
+import { CustomerListComponent } from './components/admin-panel/customer-list/customer-list.component';
+import { UserOperationClaimComponent } from './components/admin-panel/ClaimTransactions/user-operation-claim/user-operation-claim.component';
+import { OperationClamComponent } from './components/admin-panel/ClaimTransactions/operation-clam/operation-clam.component';
+import { OperationClaimAddComponent } from './components/admin-panel/ClaimTransactions/operation-claim-add/operation-claim-add.component';
+import { UserOpertaionClaimAddComponent } from './components/admin-panel/ClaimTransactions/user-opertaion-claim-add/user-opertaion-claim-add.component';
+import { UserOperationUpdateComponent } from './components/admin-panel/ClaimTransactions/user-operation-update/user-operation-update.component';
 
 @NgModule({
   declarations: [
@@ -68,10 +75,18 @@ import { RegisterComponent } from './components/register/register.component';
     AdminCarAddComponent,
     LoginComponent,
     RegisterComponent,
+    AdminBrandListComponent,
+    CustomerListComponent,
+    UserOperationClaimComponent,
+    OperationClamComponent,
+    OperationClaimAddComponent,
+    UserOpertaionClaimAddComponent,
+    UserOperationUpdateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    DataTablesModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -84,8 +99,8 @@ import { RegisterComponent } from './components/register/register.component';
   ],
 
   providers: [
-    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
-    ],
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

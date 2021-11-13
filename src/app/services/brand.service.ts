@@ -17,6 +17,7 @@ export class BrandService {
   {
     return this.httpClient.get<ListResponseModel<Brand>>(this.apiUrl+"Brands/GetList")
   }
+  
   Add(brand:Brand):Observable<ResponseModel>{
   let newPath=this.apiUrl+"Brands/Add"
   return this.httpClient.post<ResponseModel>(newPath,brand)

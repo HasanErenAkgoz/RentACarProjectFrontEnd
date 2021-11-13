@@ -20,7 +20,7 @@ constructor(private authService:AuthService
         return true;
       }else{
         this.router.navigate(["login"])
-        this.toastrService.info("Giriş yapmalısınız","Bilgi")
+        this.toastrService.info("Bu Sayfaya Girebilmek İçin Lütfen Giriş Yapınız.","Bilgi")
         return false;
       }
   }

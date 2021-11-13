@@ -16,12 +16,13 @@ export class CarDetailComponent implements OnInit {
   getCarDetail: CarDetail[];
   carImages: Image[];
   defaultPath: string = 'https://localhost:44323/images/';
+  defaultImage:string="default.jpg";
   dataLoaded: boolean = false;
   carDetailsLoad=false;
   controlPrev: Boolean = false;
   rentalControl = false;
   rentalMessage="";
-
+  index:number=0;
 
   constructor(
     private carDetailService: CarDetailService,
@@ -57,6 +58,7 @@ export class CarDetailComponent implements OnInit {
      if (this.carImages.length>1){
        this.controlPrev=true;
      }
+
     });
   }
   addToCart(car:CarDetail){
@@ -69,4 +71,5 @@ export class CarDetailComponent implements OnInit {
       this.rentalMessage=response.message;
     });
   }
+
 }

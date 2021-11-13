@@ -22,7 +22,7 @@
         />
       </div>
     </div>
-    <div >
+    <div *ngIf="controlPrev" >
       <button
         class="carousel-control-prev"
         type="button"
@@ -83,13 +83,51 @@
     <br>
     <div class="text text-center" >
       <button  (click)="carDelete(car)" type="button" class="btn btn-danger" style="margin-right: 1rem;">Sil</button>
-      <button type="button" routerLink="/admin/car/update/{{car.carId}}" class="btn btn-warning">Güncelle</button>
-
+      <button type="button" routerLink="/admin/car/update/{{car.carId}}" style="margin-right: 1rem;" class="btn btn-warning">Güncelle</button>
+      <button  type="button"  class="btn btn-success responsive" data-bs-toggle="modal" data-bs-target="#imageAddModal">Araç Resmi Ekle</button>
     </div>
   </div>
-
 </div>
-
-
 </div>
+<div
+class="modal fade"
+id="imageAddModal"
+data-bs-backdrop="static"
+data-bs-keyboard="false"
+tabindex="-1"
+aria-labelledby="staticBackdropLabel"
+aria-hidden="true"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="staticBackdropLabel">Aracın Resmini Ekleme</h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+      <form [formGroup]="imageAddForm">
+      <div class="form-group">
+        <input type="number" formControlName="carId" hidden >
+        <label><span>Resim Seçiniz</span></label>
 
+        <input type="file" id="file" accept=".jpg,.png,.gif" multiple  (change)="uploadFile($event)"  class="form-control"formControlName="imagePath">
+      </div>
+      </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        Vazgeç
+      </button>
+
+      <button type="button"  class="btn btn-primary" (click)="addImage()" >Kaydet</button>
+    </div>
+  </div>
+</div>
+</div>

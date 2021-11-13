@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
@@ -20,14 +20,18 @@ export class AdminCarDetailComponent implements OnInit {
   defaultImage: string = 'default.jpg';
   index: number = 0;
   carUpdateForm: FormGroup;
-  formBuilder: any;
   carId: number;
+  imageAddForm: FormGroup;
+  imageFiles: File[];
+  date: Date;
+  controlPrev: Boolean = false;
   constructor(
     private carDetailService: CarDetailService,
     private carImageService: CarImagesService,
     private activatedRoute: ActivatedRoute,
     private toasterService: ToastrService,
-    private router: Router
+    private router: Router,
+    private formBuilder:FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -36,26 +40,16 @@ export class AdminCarDetailComponent implements OnInit {
         this.getCarDetailByCarId(params['carId']);
         this.getCarImage(params['carId']);
         this.carId = params['carId'];
-        console.log(this.carImages[0].imagePath);
       }
+
     });
+    this.createImageAddForm();
   }
-  createCarUpdateForm() {
-    this.carUpdateForm = this.formBuilder.group({
-      carId: [this.getCarDetail[0].carId, Validators.required],
-      plate: [this.getCarDetail[0].plate, Validators.required],
-      brandId: [this.getCarDetail[0].brandId, Validators.required],
-      modelId: [this.getCarDetail[0].modelId, Validators.required],
-      year: [this.getCarDetail[0].year, Validators.required],
-      km: [this.getCarDetail[0].km, Validators.required],
-      motorHp: [this.getCarDetail[0].motorHp, Validators.required],
-      color: [this.getCarDetail[0].color, Validators.required],
-      dailyPrice: [this.getCarDetail[0].dailyPrice, Validators.required],
-      minFindeksScore: [
-        this.getCarDetail[0].minFindeksScore,
-        Validators.required,
-      ],
-      status: [true, Validators.required],
+
+  createImageAddForm() {
+    this.imageAddForm = this.formBuilder.group({
+      carId: [this.carId, Validators.required],
+      imagePath: [null],
     });
   }
   getCarDetailByCarId(carId: number) {
@@ -66,6 +60,9 @@ export class AdminCarDetailComponent implements OnInit {
   getCarImage(carId: number) {
     this.carImageService.getImages(carId).subscribe((response) => {
       this.carImages = response.data;
+      if (this.carImages.length>1){
+        this.controlPrev=true;
+      }
     });
   }
 
@@ -76,5 +73,20 @@ export class AdminCarDetailComponent implements OnInit {
     });
   }
 
+  uploadFile(event: any) {
+    this.imageFiles = event.target.files;
+  }
+  addImage() {
+    if (this.imageAddForm.valid) {
+      for (let i = 0; i < this.imageFiles.length; i++) {
+        this.carImageService
+          .upload( this.imageFiles[i],this.carId)
+          .subscribe((response) => {
+            this.toasterService.success(response.message)
+            this.getCarImage(this.carId);
+          });
+      }
+    }
+  }
 
 }

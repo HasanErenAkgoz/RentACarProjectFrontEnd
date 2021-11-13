@@ -35,7 +35,7 @@ export class AdminCarListComponent implements OnInit {
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 5,
+      pageLength: 8,
       processing: true
     };
     this.activatedRout.params.subscribe((params) => {
@@ -53,8 +53,8 @@ export class AdminCarListComponent implements OnInit {
     this.carDetailService.getCarsDetail().subscribe((response) => {
       if (response) {
         this.carList = response.data;
-
-        this.empty=false
+        this.empty=false;
+        this.toasterService.success(response.message);
       }
     });
   }

@@ -15,7 +15,9 @@
         class="carousel-item active"
       >
         <img
-          [src]="defaultPath + carImage.imagePath"
+          [src]=" carImage.imagePath.length!==0
+          ?defaultPath + carImage.imagePath
+          :defaultPath"
           class="d-block w-100"
           style="height: 35rem"
         />

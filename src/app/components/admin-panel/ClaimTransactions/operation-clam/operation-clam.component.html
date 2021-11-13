@@ -1,0 +1,105 @@
+<div class="d-flex toggled" id="wrapper">
+  <app-sidebar style="width: 16rem"></app-sidebar>
+  <div id="page-content-wrapper">
+    <app-navbar></app-navbar>
+    <div class="container">
+      <h3 class="text text-center text-dark">Roller</h3>
+      <table
+        dataTable
+        datatable
+        [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger"
+        class="table table-striped table-hover"
+      >
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Yetki Düzeyi</th>
+            <th>İşlemler</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of operationClaim">
+            <td>{{ customer.id  }}</td>
+            <td>{{ customer.name}}</td>
+            <td>
+              <button
+                type="button"
+                (click)="Delete(customer)"
+                class="btn btn-danger btn-ms"
+              >
+                Sil
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#operationClaimModel"
+        class="btn btn-primary"
+      >
+        Rol Ekle
+      </button>
+      <button
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#updateOperationClaimModel"
+        class="btn btn-warning "
+      >
+        Güncelle
+      </button>
+    </div>
+    <app-operation-claim-add></app-operation-claim-add>
+  </div>
+</div>
+<div class="modal fade" id="updateOperationClaimModel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Rol Ekleme</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form [formGroup]="claimUpdateForm">
+            <div class="form-group">
+              <label><span>Güncellemek İstediğiniz Rol</span></label>
+              <br />
+              <select
+                formControlName="id"
+                [(ngModel)]="ClaimId"
+                class="form-select"
+              >
+                <option
+                  *ngFor="let claim of operationClaim"
+                  [ngValue]="claim.id"
+                >
+                  {{ claim.name }}
+                </option>
+              </select>
+              <br />
+              <label><span>Rol İsmi</span></label>
+              <br />
+              <input type="text" class="form-control" formControlName="name" />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Vazgeç
+        </button>
+        <button type="button" (click)="Update()" class="btn btn-warning">
+          Güncelle
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

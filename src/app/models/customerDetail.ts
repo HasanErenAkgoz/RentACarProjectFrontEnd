@@ -5,4 +5,6 @@ export interface CustomerDetail {
   address: string;
   phoneNumber: string;
   findeksScore: number;
+  email:string;
+  password:string;
 }

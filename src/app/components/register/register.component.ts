@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
         localStorage.setItem("token",response.data.token)
         this.router.navigate(["login"])
       },(responseError)=>{
-        this.toastrService.error("Eksik veya Hatalı Bir Bilgi Girdiniz")
+        this.toastrService.error(responseError.message)
       })
     }
   }

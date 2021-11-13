@@ -1,0 +1,56 @@
+<div class="d-flex toggled" id="wrapper">
+  <app-sidebar style="width: 16rem"></app-sidebar>
+  <div id="page-content-wrapper">
+    <app-navbar></app-navbar>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text text-center">
+          <h3>Rol Ekleme</h3>
+        </div>
+        <form [formGroup]="claimAdd">
+          <label>Kullanıcı Claim Id</label>
+          <input
+            type="number"
+            class="form-control"
+            value="userId"
+            placeholder="{{ getUserOpertaionClaim.userClaimId }}"
+            disabled
+          />
+
+          <label>Email Adresi</label>
+          <input
+            type="number"
+            disabled
+            class="form-control"
+            placeholder="{{ getUserOpertaionClaim.email }}"
+          />
+          <label>Adı-Soyadı</label>
+          <input
+            type="number"
+            disabled
+            class="form-control"
+            placeholder="{{ getUserOpertaionClaim.firstName }} {{
+              getUserOpertaionClaim.lastName
+            }}"
+          />
+          <label>Claim İsmi</label>
+          <select
+            class="form-select"
+            [(ngModel)]="claimId"
+            formControlName="operationClaimId"
+          >
+            <option
+              *ngFor="let operationClaims of operationClaim"
+              [ngValue]="operationClaims.id"
+            >
+              {{ operationClaims.name }}
+            </option>
+          </select>
+        </form>
+      </div>
+      <br>
+      <button class="btn btn-warning" (click)="Add()">Rol Ekle</button>
+    </div>
+    <br />
+  </div>
+</div>
