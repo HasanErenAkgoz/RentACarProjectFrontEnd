@@ -19,7 +19,7 @@ export class UserOpertaionClaimAddComponent implements OnInit {
 
   userClaimAdd:FormGroup
   UserList:UserModel[];
-  getUserOpertaionClaim:UserOperationClaimDto
+  getUserOpertaionClaim:UserOperationClaimDto[]
   operationClaim:OperationClaim[]
   claimAdd:FormGroup;
   claimId:number;
@@ -34,27 +34,27 @@ export class UserOpertaionClaimAddComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       if (params['userClaimId']) {
-        this.getUserOperationClaim(params['userClaimId']);
+        this.GetUserOperationClaim(params['userClaimId']);
       }
     });
-
     this.GetAll();
 
   }
 
   createUserClaimAdd(){
     this.claimAdd=this.formBuilder.group({
-      userId: [this.getUserOpertaionClaim.userId, Validators.required],
+      userId: [this.getUserOpertaionClaim[0].userId, Validators.required],
       operationClaimId: ["", Validators.required],
       status: [true, Validators.required],
 
     })
   }
 
-  getUserOperationClaim(id: number) {
+  GetUserOperationClaim(id: number) {
     this.userOpertaionClaim.GetById(id).subscribe((response) => {
       this.getUserOpertaionClaim = response.data;
       this.createUserClaimAdd();
+      console.log(this.getUserOpertaionClaim[0])
 
     });
   }
@@ -65,10 +65,11 @@ export class UserOpertaionClaimAddComponent implements OnInit {
         this.toastrService.success(responso.message);
 
       }
+
     });
   }
   Add() {
-      if (this.claimAdd.value && this.claimAdd.value.operationClaimId!=this.getUserOpertaionClaim.operationClaimId) {
+      if (this.claimAdd.value && this.claimAdd.value.operationClaimId!=this.getUserOpertaionClaim[0].operationClaimId) {
         let claimModel = Object.assign({}, this.claimAdd.value);
         this.userOpertaionClaim.Add(claimModel).subscribe((response) => {
          this.toastrService.success(response.message);

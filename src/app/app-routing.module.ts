@@ -24,6 +24,7 @@ import { OperationClaimAddComponent } from './components/admin-panel/ClaimTransa
 import { UserOpertaionClaimAddComponent } from './components/admin-panel/ClaimTransactions/user-opertaion-claim-add/user-opertaion-claim-add.component';
 import { UserOperationUpdateComponent } from './components/admin-panel/ClaimTransactions/user-operation-update/user-operation-update.component';
 import { CarRentalComponent } from './components/admin-panel/RentalTransactions/car-rental/car-rental.component';
+import { UserUpdateComponent } from './components/user-update/user-update.component';
 
 const routes: Routes = [
   //User Components
@@ -37,76 +38,81 @@ const routes: Routes = [
   {
     path: 'admin/dashboard',
     component: AdminPanelComponent,
-    canActivate: [LoginGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/cars',
     component: AdminCarListComponent,
-    canActivate: [LoginGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/carDetail/:carId',
     component: AdminCarDetailComponent,
-    canActivate: [LoginGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/car/update/:carId',
     component: CarUpdateComponent,
-    canActivate: [LoginGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/car/add',
     component: AdminCarAddComponent,
-    canActivate: [LoginGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/brand/Add',
     component: BrandAddComponent,
-    canActivate: [LoginGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/brand/brandList',
     component: AdminBrandListComponent,
-    canActivate: [LoginGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/customer/customerList',
     component: CustomerListComponent,
-    canActivate: [LoginGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/claim/operationclaim',
     component: OperationClamComponent,
-    canActivate: [LoginGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/claim/operationclaimadd',
     component: OperationClaimAddComponent,
-    canActivate: [LoginGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/user/useroperationclaim',
     component: UserOperationClaimComponent,
-    canActivate: [LoginGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/user/useroperationclaimadd',
     component: UserOpertaionClaimAddComponent,
-    canActivate: [LoginGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/user/useroperationclaimupdate/:userClaimId',
     component: UserOperationUpdateComponent,
-    canActivate: [LoginGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/user/useroperationclaimadd/:userClaimId',
     component: UserOpertaionClaimAddComponent,
-    canActivate: [LoginGuard],
+    canActivate: [AdminGuard],
   },
   {
     path: 'admin/rental/carrental',
     component: CarRentalComponent,
+    canActivate: [AdminGuard],
+  },
+  {
+    path: 'user/userupdate',
+    component: UserUpdateComponent,
     canActivate: [LoginGuard],
   },
 

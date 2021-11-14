@@ -3,13 +3,17 @@
   <body style="max-height: 100%" class="page-top">
     <div id="layoutSidenav">
       <div id="layoutSidenav_nav">
-        <nav
+        <nav style="height: 45rem;"
           class="sb-sidenav accordion sb-sidenav-dark responsive"
           id="sidenavAccordion"
         >
           <div class="sb-sidenav-menu">
             <div class="nav">
               <div class="sb-sidenav-menu-heading">İşlemler</div>
+              <a class="nav-link" routerLink="/admin/dashbosrd">
+                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                Dashbosrd
+              </a>
               <a class="nav-link" routerLink="/admin/cars">
                 <div class="sb-nav-link-icon"><i class="fas fa-car"></i></div>
                 Araçlarımız
@@ -58,49 +62,6 @@
                   <a class="nav-link" routerLink="/admin/user/useroperationclaim">Yetki Atama</a>
                 </nav>
               </div>
-
-              <div class="sb-sidenav-menu-heading">Rapor ve Faturalar</div>
-              <a class="nav-link" href="~/Sales/Index">
-                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                Satışlar
-              </a>
-              <a class="nav-link" href="~/Invoices/Index">
-                <div class="sb-nav-link-icon">
-                  <i class="fas fa-file-invoice"></i>
-                </div>
-                Faturalar
-              </a>
-              <a class="nav-link" href="~/Expenses/Index">
-                <div class="sb-nav-link-icon">
-                  <i class="fas fa-money-check-alt"></i>
-                </div>
-                Giderler
-              </a>
-              <a class="nav-link" href="~/Cargo/Index">
-                <div class="sb-nav-link-icon">
-                  <i class="fas fa-truck-moving"></i>
-                </div>
-                Kargolar
-              </a>
-
-              <a class="nav-link" href="~/Statistics/Index">
-                <div class="sb-nav-link-icon">
-                  <i class="fas fa-file-invoice-dollar"></i>
-                </div>
-                İstatistikler
-              </a>
-              <a class="nav-link" href="~/Statistics/SimplesTable">
-                <div class="sb-nav-link-icon">
-                  <i class="fas fa-file-invoice-dollar"></i>
-                </div>
-                Hızlı Bakış Tabloları
-              </a>
-              <a class="nav-link" href="~/Login/Index">
-                <div class="sb-nav-link-icon">
-                  <i class="fab fa-facebook-messenger"></i>
-                </div>
-                Çıkış Yap
-              </a>
             </div>
           </div>
           <div class="sb-sidenav-footer">

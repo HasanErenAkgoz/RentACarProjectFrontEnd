@@ -23,6 +23,8 @@
               <th>Müşteri Adı-Soyadı</th>
               <th>Kiralama Tarihi</th>
               <th>Geri Getirme Tarihi</th>
+              <th>Geri Getirildiği Tarih</th>
+
               <th>Araç Teslim Alma</th>
 
             </tr>
@@ -33,8 +35,10 @@
               <td>{{ rental.brandName }}</td>
               <td>{{ rental.modelName }}</td>
               <td>{{ rental.firstName }} {{ rental.lastName }}</td>
-              <td>{{ rental.rentDate }}</td>
-              <td>{{ rental.rentEndDate }}</td>
+              <td>{{ rental.rentDate|date }}</td>
+              <td>{{ rental.rentEndDate |date }}</td>
+              <td>{{ rental.returnDate |date }}</td>
+
               <td><button class="btn btn-warning" (click)="update(rental)">Aracı Teslim Al</button></td>
             </tr>
           </tbody>

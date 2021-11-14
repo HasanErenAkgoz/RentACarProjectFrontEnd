@@ -14,10 +14,9 @@ import { UserOperationClaimService } from 'src/app/services/user-operation-claim
 })
 export class UserOperationUpdateComponent implements OnInit {
   userClaimUpdateForm: FormGroup;
-  getUserOpertaionClaim: UserOperationClaimDto;
+  getUserOpertaionClaim: UserOperationClaimDto[];
   operationClaim: OperationClaim[];
   claimId: number;
-  claimUpdateForm: FormGroup;
 
   constructor(
     private userOpertaionClaim: UserOperationClaimService,
@@ -31,24 +30,27 @@ export class UserOperationUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       if (params['userClaimId']) {
-        this.getUserOperationClaim(params['userClaimId']);
+        this.GetUserOperationClaim(params['userClaimId']);
+
       }
     });
     this.GetAll();
   }
   createUserClaimUpdateForm() {
     this.userClaimUpdateForm = this.formBuilder.group({
-      id: [this.getUserOpertaionClaim.id, Validators.required],
-      userId: [this.getUserOpertaionClaim.userId, Validators.required],
+      id: [this.getUserOpertaionClaim[0].id, Validators.required],
+      userId: [this.getUserOpertaionClaim[0].userId, Validators.required],
       operationClaimId: [this.claimId, Validators.required],
       status: [true, Validators.required],
     });
   }
 
-  getUserOperationClaim(id: number) {
+  GetUserOperationClaim(id: number) {
     this.userOpertaionClaim.GetById(id).subscribe((response) => {
       this.getUserOpertaionClaim = response.data;
+      console.log(this.getUserOpertaionClaim)
       this.createUserClaimUpdateForm();
+
     });
   }
   GetAll() {
@@ -56,7 +58,6 @@ export class UserOperationUpdateComponent implements OnInit {
       this.operationClaim = responso.data;
       if (this.operationClaim!=null) {
         this.toastrService.success(responso.message);
-
       }
     });
   }

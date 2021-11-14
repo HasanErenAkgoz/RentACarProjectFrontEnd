@@ -30,4 +30,8 @@ export class LocalStorageService {
   getToken(){
     return localStorage.getItem("token")
   }
+
+  clear(){
+    return localStorage.clear()
+  }
 }

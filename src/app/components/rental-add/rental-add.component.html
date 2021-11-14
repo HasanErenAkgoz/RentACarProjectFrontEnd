@@ -50,24 +50,23 @@
               <select
                 formControlName="customerInfoId"
                 [(ngModel)]="customerInfoId"
-                (change)="customerChange()"
                 class="form-select"
               >
                 <option
-                  *ngFor="let customer of customers"
-                  [ngValue]="customer.id"
                   class="option"
+                  [value]="customers.id"
                 >
-                  {{ customer.firstName }} {{ customer.lastName }}
+                  {{ customers.firstName + " " + customers.lastName }}
                 </option>
               </select>
             </div>
             <div class="mb-3">
-              <label for="rentDate" class="form-label">Başlangıç Tarihi</label>
+              <label for="rentDate" class="form-label"
+                >Başlangıç Tarihi</label
+              >
               <input
                 formControlName="rentDate"
                 min="{{ minDate }}"
-                (change)="onChangeEvent($event)"
                 type="date"
                 class="form-control"
               />
@@ -100,7 +99,7 @@
               />
             </div>
             <div class="mb-3">
-              <label for="totalPrice"  class="form-label">Toplam Fiyat</label>
+              <label for="totalPrice" class="form-label">Toplam Fiyat</label>
               <input
                 formControlName="totalPrice"
                 [(ngModel)]="totalPrice"

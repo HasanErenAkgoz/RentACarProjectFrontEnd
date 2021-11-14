@@ -21,9 +21,9 @@ export class UserOperationClaimService {
     );
   }
 
-  GetById(id:number):Observable<SingleResponseModel<UserOperationClaimDto>>{
+  GetById(id:number):Observable<ListResponseModel<UserOperationClaimDto>>{
     let newPath=this.apiUrl+"UserOperationClaim/getbyıd?id="+id
-    return this.httpClient.get<SingleResponseModel<UserOperationClaimDto>>(newPath);
+    return this.httpClient.get<ListResponseModel<UserOperationClaimDto>>(newPath);
   }
 
   Add(UserOperationClaim: UserOperationClaimDto): Observable<ResponseModel> {

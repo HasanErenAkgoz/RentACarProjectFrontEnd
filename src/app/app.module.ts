@@ -44,6 +44,9 @@ import { OperationClaimAddComponent } from './components/admin-panel/ClaimTransa
 import { UserOpertaionClaimAddComponent } from './components/admin-panel/ClaimTransactions/user-opertaion-claim-add/user-opertaion-claim-add.component';
 import { UserOperationUpdateComponent } from './components/admin-panel/ClaimTransactions/user-operation-update/user-operation-update.component';
 import { CarRentalComponent } from './components/admin-panel/RentalTransactions/car-rental/car-rental.component';
+import { RouterModule } from '@angular/router';
+import { UserUpdateComponent } from './components/user-update/user-update.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
 
 
 @NgModule({
@@ -85,6 +88,8 @@ import { CarRentalComponent } from './components/admin-panel/RentalTransactions/
     UserOpertaionClaimAddComponent,
     UserOperationUpdateComponent,
     CarRentalComponent,
+    UserUpdateComponent,
+    ChangePasswordComponent,
 
   ],
   imports: [

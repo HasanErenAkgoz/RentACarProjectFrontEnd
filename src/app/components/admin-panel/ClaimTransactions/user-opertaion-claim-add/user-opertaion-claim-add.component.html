@@ -13,7 +13,7 @@
             type="number"
             class="form-control"
             value="userId"
-            placeholder="{{ getUserOpertaionClaim.id }}"
+            placeholder="{{ getUserOpertaionClaim[0].id }}"
             disabled
           />
 
@@ -22,15 +22,15 @@
             type="number"
             disabled
             class="form-control"
-            placeholder="{{ getUserOpertaionClaim.email }}"
+            placeholder="{{ getUserOpertaionClaim[0].email }}"
           />
           <label>Adı-Soyadı</label>
           <input
             type="number"
             disabled
             class="form-control"
-            placeholder="{{ getUserOpertaionClaim.firstName }} {{
-              getUserOpertaionClaim.lastName
+            placeholder="{{ getUserOpertaionClaim[0].firstName }} {{
+              getUserOpertaionClaim[0].lastName
             }}"
           />
           <label>Claim İsmi</label>

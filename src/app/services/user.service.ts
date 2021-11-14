@@ -24,14 +24,28 @@ export class UserService {
     return this.httpClient.get<SingleResponseModel<UserModel>>(newPath);
   }
 
-  GetByMail(email: string): Observable<SingleResponseModel<UserModel>> {
+  GetByMail(email:any): Observable<UserModel> {
     let newPath = this.apiUrl + 'User/getbymail?email=' + email;
-    return this.httpClient.get<SingleResponseModel<UserModel>>(newPath);
+    return this.httpClient.get<UserModel>(newPath);
   }
 
   update(userModel: UserModel): Observable<ResponseModel> {
-    let newPath = this.apiUrl + 'users/updateinfo';
+    let newPath = this.apiUrl + 'user/update';
     return this.httpClient.post<ResponseModel>(newPath, userModel);
+  }
+
+  profileUpdate(user:UserModel):Observable<ResponseModel>{
+    console.log(user)
+    return this.httpClient.post<ResponseModel>(this.apiUrl + 'users/updateprofile', {
+      user:{
+        'id': user.id,
+        'firstName': user.firstName,
+        'lastName': user.lastName,
+        'email': user.email,
+        'status':user.status
+      },
+      password:user.password
+    });
   }
 
 }

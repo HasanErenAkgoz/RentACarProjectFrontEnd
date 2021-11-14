@@ -5,6 +5,8 @@ import { CustomerDetail } from '../models/customerDetail';
 import { CustomerInfo } from '../models/customerInfo';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
+import { SingleResponseModel } from '../models/singleResponseModel';
+import { UserModel } from '../models/userModel';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +24,15 @@ export class CustomerService {
     Delete(customer: CustomerDetail): Observable<ResponseModel> {
       let newPath = this.apiUrl + 'Customers/Delete';
       return this.httpClient.post<ResponseModel>(newPath, customer);
+    }
+    GetById(id:number):Observable<SingleResponseModel<CustomerDetail>>{
+      let newPath=this.apiUrl+"Customers/getcustomeruserdetailId?id="+id
+      return this.httpClient.get<SingleResponseModel<CustomerDetail>>(newPath)
+    }
+
+    update(customer:CustomerDetail):Observable<ResponseModel>{
+      let newPath = this.apiUrl + "Customers/update"
+      return this.httpClient
+      .post<ResponseModel>(newPath,customer)
     }
 }

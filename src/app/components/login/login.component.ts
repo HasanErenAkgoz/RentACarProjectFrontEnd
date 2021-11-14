@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
         (response) => {
           this.toastrService.success(response.message);
           localStorage.setItem('token', response.data.token);
+          localStorage.setItem('email', this.loginForm.value.email);
           this.router.navigate(["/"])
 
         },

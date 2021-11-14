@@ -1,58 +1,92 @@
 <div class="preloader d-none">
   <div class="loader">
-      <div class="ytp-spinner">
-          <div class="ytp-spinner-container">
-              <div class="ytp-spinner-rotator">
-                  <div class="ytp-spinner-left">
-                      <div class="ytp-spinner-circle"></div>
-                  </div>
-                  <div class="ytp-spinner-right">
-                      <div class="ytp-spinner-circle"></div>
-                  </div>
-              </div>
+    <div class="ytp-spinner">
+      <div class="ytp-spinner-container">
+        <div class="ytp-spinner-rotator">
+          <div class="ytp-spinner-left">
+            <div class="ytp-spinner-circle"></div>
           </div>
+          <div class="ytp-spinner-right">
+            <div class="ytp-spinner-circle"></div>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
 
 <header class="header navbar-area">
-<div class="container">
-  <div class="row">
+  <div class="container">
+    <div class="row">
       <div class="col-lg-12">
-          <nav class="navbar navbar-expand-lg">
-              <a class="navbar-brand"  href="index.html">
-              <h4 style="color: whitesmoke;">GenesisCarRental</h4>
-              </a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse"
-                  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                  aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-              </button>
+        <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand" href="index.html">
+            <h4 style="color: whitesmoke">GenesisCarRental</h4>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="toggler-icon"></span>
+            <span class="toggler-icon"></span>
+            <span class="toggler-icon"></span>
+          </button>
 
-              <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                  <ul id="nav"  class="navbar-nav ml-auto">
-                      <li class="nav-item">
-                          <a class="page-scroll active" href="#home">Ana menü</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="page-scroll active" href="#feature">Hizmetlerimiz</a>
-                    </li>
-                      <li class="nav-item">
-                          <a class="page-scroll" href="#about">Hakkımızda</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="page-scroll" routerLink="/cars">Araçlarımız</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="page-scroll" href="#contact">İletisim</a>
-                      </li>
-                  </ul>
-              </div> <!-- navbar collapse -->
-          </nav> <!-- navbar -->
+          <div
+            class="collapse navbar-collapse sub-menu-bar"
+            id="navbarSupportedContent"
+          >
+            <ul id="nav" class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="page-scroll active" href="#home">Ana menü</a>
+              </li>
+              <li class="nav-item">
+                <a class="page-scroll active" href="#feature">Hizmetlerimiz</a>
+              </li>
+              <li class="nav-item">
+                <a class="page-scroll" href="#about">Hakkımızda</a>
+              </li>
+              <li class="nav-item">
+                <a class="page-scroll" routerLink="/cars">Araçlarımız</a>
+              </li>
+              <li class="nav-item">
+                <a class="page-scroll" href="#contact">İletisim </a>
+              </li>
+              <li *ngIf="checkToEmail() == true" class="nav-item dropdown">
+                <a
+                  href=""
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                >
+                  <i class="fa fa-user">
+                    <span class="badge badge-primary"></span>
+                  </i>
+                  {{ this.user.firstName }} {{ this.user.lastName }}</a
+                >
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a routerLink="/user/userupdate" style="color: black;" class="dropdown-item"
+                    ><i class="fa fa-pencil fa-fw"></i> Ayarlar</a
+                  >
+                  <div class="dropdown-divider"></div>
+                  <a href="" class="dropdown-item" style="color: black;" (click)="logOut()"
+                    ><i class="fa fa-sign-out"></i> Çıkış Yap</a
+                  >
+                </div>
+              </li>
+            </ul>
+
+          </div>
+          <!-- navbar collapse -->
+        </nav>
+        <!-- navbar -->
       </div>
-  </div> <!-- row -->
-</div> <!-- container -->
-
+    </div>
+    <!-- row -->
+  </div>
+  <!-- container -->
 </header>

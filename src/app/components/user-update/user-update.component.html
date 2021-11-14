@@ -1,0 +1,77 @@
+<app-navi></app-navi>
+
+<section
+  class="hero-section"
+  id="background"
+  style="
+    background-image: url('../../../assets/img/4.jpg');
+  "
+  data-stellar-background-ratio="0.5"
+>
+  <div class="overlay"></div>
+  <div class="container">
+    <div
+      class="
+        row
+        no-gutters
+        slider-text
+        js-fullheight
+        align-items-end
+        justify-content-start
+      "
+    >
+      <div >
+        <h2 class=" bread" style="color:whitesmoke">
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+<div  class="container">
+  <br>
+  <div class="title text text-center">
+    <h4>Üye Bilgileri Güncelleme</h4>
+  </div>
+
+<form class="form-group " [formGroup]="userForm">
+  <br>
+<div class="row">
+ <div class="col-md-4">
+   <label>Adınız</label>
+   <input type="text" name="firstName"   class="form-control"  formControlName="firstName">
+ </div>
+ <div class="col-md-4">
+  <label>Soyadınız</label>
+  <input type="text" name="lastName" class="form-control" placeholder="{{user.lastName}}"   formControlName="lastName">
+</div>
+<div class="col-md-4">
+  <label>Email Adresiniz</label>
+  <input type="email" name="email" class="form-control" placeholder="{{user.email}}"   formControlName="email">
+</div>
+</div>
+
+
+</form>
+
+<form class="form-group " [formGroup]="customerForm">
+
+<div class="row">
+ <div class="col-md-4">
+   <label>telefon Numarası</label>
+   <input type="text" name="phoneNumber" placeholder="{{customer.phoneNumber}}"   class="form-control"  formControlName="phoneNumber">
+ </div>
+ <div class="col-md-4">
+  <label>Adres</label>
+  <input type="text" name="lastName" class="form-control" placeholder="{{customer.address}}"   formControlName="address">
+</div>
+<div class="col-md-4">
+  <label>Findeks Score</label>
+  <input type="email" name="email" class="form-control" disabled placeholder="{{customer.findeksScore}}" >
+</div>
+</div>
+</form>
+<br>
+<button class="btn btn-success" (click)="updateCustomer()" >Güncelle</button>
+<button style="margin-left: 1rem;"  type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changepassword">Şifreyi Güncelle</button>
+</div>
+<app-change-password></app-change-password>

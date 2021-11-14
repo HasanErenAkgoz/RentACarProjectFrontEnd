@@ -1,4 +1,4 @@
-export interface CustomerDetail {
+export class CustomerDetail {
   id: number;
   firstName: string;
   lastName: string;
@@ -6,5 +6,5 @@ export interface CustomerDetail {
   phoneNumber: string;
   findeksScore: number;
   email:string;
-  password:string;
+  userId:number
 }
