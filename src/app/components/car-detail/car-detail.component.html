@@ -83,9 +83,10 @@
   <br>
 </div>
 <div class="justify-content-center align-items-center text-center">
-  <button *ngIf="rentalControl == true" type="button"  class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#rentalModal">Kirala</button>
-  <button *ngIf="rentalControl == false" type="button" class="btn btn-secondary btn-lg" disabled>{{ rentalMessage }}</button>
-
+  <button *ngIf="rentalControl == true && userIdControl==true"  type="button"  class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#rentalModal">Kirala</button>
+  <div *ngIf="userIdControl==false" class="alert alert-danger" role="alert">
+    Aracı Kiralayabilmeniz İçin Giriş Yapmalısınız
+  </div>
 </div>
 <app-rental-add *ngIf="rentalControl == true" [car]="getCarDetail"></app-rental-add>
 

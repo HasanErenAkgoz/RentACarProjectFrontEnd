@@ -78,6 +78,10 @@
                   >
                 </div>
               </li>
+
+              <li *ngIf="checkToEmail() == false" class="nav-item">
+                <a class="page-scroll" routerLink="/login">Giriş Yap </a>
+              </li>
             </ul>
 
           </div>

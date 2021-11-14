@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CreditCard } from 'src/app/models/creditCard';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { PaymentService } from 'src/app/services/payment.service';
 import { RentalService } from 'src/app/services/rental.service';
 
@@ -26,6 +27,7 @@ export class PaymentComponent implements OnInit {
   creditCards: CreditCard[] = [];
   creditCardId: number;
   cardNumber:string;
+  userId:any;
   @ViewChild('btnCardSave') cardSaveModal: ElementRef;
   @ViewChild('cardSaveModalClose') cardSaveModalClose: ElementRef;
 
@@ -33,7 +35,8 @@ export class PaymentComponent implements OnInit {
     private paymentService: PaymentService,
     private formBuilder: FormBuilder,
     private rentalService: RentalService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private localStorageService:LocalStorageService) { }
 
   ngOnInit(): void {
     this.rentalData();
@@ -62,8 +65,9 @@ export class PaymentComponent implements OnInit {
     });
   }
   createPaymentAddForm() {
+    this.userId=this.localStorageService.get("id");
     this.paymentAddForm = this.formBuilder.group({
-      userId: [0, Validators.required],
+      userId: [this.userId, Validators.required],
       number: ['', Validators.required],
       fullName: ['', Validators.required],
       ccv: ['', Validators.required],
@@ -73,7 +77,6 @@ export class PaymentComponent implements OnInit {
   }
   paymentAdd() {
     if (this.paymentAddForm.valid) {
-      this.paymentAddForm.get('userId')?.setValue(this.customerInfoId);
       this.paymentWait = true;
       let paymentModel = Object.assign({}, this.paymentAddForm.value);
       this.paymentService.payment(paymentModel).subscribe(

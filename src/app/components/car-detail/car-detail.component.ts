@@ -5,6 +5,7 @@ import { CarDetail } from 'src/app/models/carDetail';
 import { Image } from 'src/app/models/ımage';
 import { CarDetailService } from 'src/app/services/car-detail.service';
 import { CarImagesService } from 'src/app/services/car-images.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
@@ -22,6 +23,7 @@ export class CarDetailComponent implements OnInit {
   controlPrev: Boolean = false;
   rentalControl = false;
   rentalMessage="";
+  userIdControl:boolean=false;
   index:number=0;
 
   constructor(
@@ -29,7 +31,8 @@ export class CarDetailComponent implements OnInit {
     private carImageService: CarImagesService,
     private rentalService:RentalService,
     private activatedRoute: ActivatedRoute,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private localStorageService:LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -65,10 +68,14 @@ export class CarDetailComponent implements OnInit {
     this.toastrService.success("Araç Sepete Eklendi",car.brandName+" "+car.modelName)
   }
   getCarRentalControl(carId:number) {
+    if (this.localStorageService.get("id")!=null) {
+      this.userIdControl=true
+    }
     this.rentalService.getRentalCarControl(carId).subscribe((response) => {
       this.rentalControl=response.success;
       this.rentalControl=true;
       this.rentalMessage=response.message;
+
     });
   }
 
